@@ -1,8 +1,25 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import BootstrapVue from 'bootstrap-vue';
+import axios from 'axios';
+import App from './App.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-Vue.config.productionTip = false
+const http = axios.create({
+  baseURL: process.env.BACKEND_URL ? process.env.BACKEND_URL : 'http://localhost:8080/api/',
+});
+
+Vue.prototype.$http = http;
+
+
+Vue.use(BootstrapVue);
+
+Vue.config.productionTip = false;
+
+library.add(faTrash)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');
