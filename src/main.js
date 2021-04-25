@@ -6,9 +6,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+console.log("process.env.VUE_APP_BACKEND_URL:" + process.env.BACKEND_URL);
+
 const http = axios.create({
-  baseURL: process.env.BACKEND_URL ? process.env.BACKEND_URL : 'http://localhost:8080/api/',
+  // baseURL: process.env.BACKEND_URL ? process.env.BACKEND_URL : 'http://localhost:8080/api/',
+  baseURL: process.env.VUE_APP_BACKEND_URL || 'http://localhost:8080/api/',
 });
+console.log("process.env: %O" + JSON.stringify(process.env));
 
 Vue.prototype.$http = http;
 
