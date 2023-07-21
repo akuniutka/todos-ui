@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm --force install
+RUN npm install
 
 COPY . .
 
